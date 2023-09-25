@@ -1,7 +1,6 @@
 from django.apps import AppConfig
 
 
-class CandyConfig(AppConfig):
+class ApiConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'candy'
-    verbose_name = 'Сладости'
+    name = 'api'

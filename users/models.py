@@ -20,20 +20,18 @@ class AbstractCustomUser(models.Model):
 
 class CustomUser(AbstractCustomUser):
     def __str__(self): 
-        return f'Профиль владельца конфеты {self.username}' 
+        return f'{self.username}' 
 
     class Meta:
         verbose_name = 'Владелец конфеты'
         verbose_name_plural = 'Владельцы конфет'
      
-    
 class Producer(AbstractCustomUser):
     def __str__(self): 
-        return f'Профиль производителя {self.username}' 
+        return f'{self.username}' 
 
     class Meta:
         verbose_name = 'Производитель'
         verbose_name_plural = 'Производители'
     
     inn = models.CharField(max_length=13, verbose_name="ИНН")
-    
