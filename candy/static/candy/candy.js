@@ -1,9 +1,13 @@
 import { getCandies } from "../api/api.js";
 
 function printCandyHTML(candy){
+    let imgPath = candy.img;
+    if (typeof candy.img == 'undefined'){
+        imgPath = 'static/candy/img/blank.avif';
+    }
     let htmlText = `
         <div class="candy-block">
-            <img src="img/${candy.img}" alt="Конфета">
+            <img src="${imgPath}" alt="Конфета">
             <div class="candy-info">
                 <h2>${candy.name}</h2>
                 <p><span class="property-name">Производитель:</span> <span class="candy-manufacturer"> ${null}</span></p>
@@ -13,7 +17,7 @@ function printCandyHTML(candy){
                 <p><span class="property-name">Рейтинг:</span>${candy.rate}</p>
             </div>
         </div>`;
-    document.write(htmlText);
+    document.getElementById('main-content').innerHTML += htmlText;
 };
 
 let data = await getCandies();
