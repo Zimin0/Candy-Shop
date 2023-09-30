@@ -8,11 +8,6 @@ class CandySerializer(serializers.ModelSerializer):
         model = Candy
         fields = ['id', 'name', 'producer', 'weight', 'price', 'rate']
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'username']
-
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
