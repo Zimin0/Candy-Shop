@@ -6,7 +6,7 @@ from users.models import Producer, CustomUser
 class CandySerializer(serializers.ModelSerializer):
     class Meta:
         model = Candy
-        fields = ['id', 'name', 'producer', 'weight', 'price', 'rate']
+        fields = ['id', 'name', 'producer', 'owner', 'img', 'weight', 'price', 'rate']
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
