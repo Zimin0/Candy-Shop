@@ -42,7 +42,6 @@ export function get_average_price(jsonData){
     let count = 0;
     for (let candy of jsonData){
         count++;
-        alert(parseFloat(candy.price));
         average += parseFloat(candy.price);
     }
     average /= count;

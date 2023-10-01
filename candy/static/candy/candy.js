@@ -1,5 +1,7 @@
 import { getCandies, getProducers, getCustomUsers, get_amount, get_average_price, get_lowest_price, get_highest_price } from "../api/api.js";
 
+
+
 // Выводит конфету в html шаблон //
 function printCandyHTML(candy){
     let imgPath = candy.img;
@@ -20,7 +22,7 @@ function printCandyHTML(candy){
         </div>`;
     document.getElementById('main-content').innerHTML += htmlText;
 };
-
+showLoader();
 let data = await getCandies();
 // Отображение конфет в шаблоне //
 for (let candy of data){
@@ -44,3 +46,13 @@ average_price_el.textContent = get_average_price(data)
 lowes_price_el.textContent = get_lowest_price(data);
 highest_price_el.textContent = get_highest_price(data);
 //////////////////////////////////
+hideLoader()
+
+function showLoader() {
+    const loader = document.getElementById('loader');
+    loader.classList.remove('hidden'); // удаляем класс hidden, чтобы отобразить лоадер
+}
+function hideLoader() {
+    const loader = document.getElementById('loader');
+    loader.classList.add('hidden'); // добавляем класс hidden, чтобы скрыть лоадер
+}
