@@ -1,4 +1,4 @@
-import { getCandies, getProducers, getCustomUsers } from "../api/api.js";
+import { getCandies, getProducers, getCustomUsers, get_amount, get_average_price, get_lowest_price, get_highest_price } from "../api/api.js";
 
 // Выводит конфету в html шаблон //
 function printCandyHTML(candy){
@@ -22,12 +22,25 @@ function printCandyHTML(candy){
 };
 
 let data = await getCandies();
+// Отображение конфет в шаблоне //
 for (let candy of data){
     // console.log(candy.name + "; price = " + candy.price);
     let producer = await getProducers(candy.producer);
     let owner = await getCustomUsers(candy.owner);
     candy.producer = producer;
     candy.owner = owner;
-    console.log(candy);
     printCandyHTML(candy);
 }
+//////////////////////////////////
+
+// Заполнение данных о конфетах //
+const amount_el = document.getElementById("totalCandies");
+const average_price_el = document.getElementById("averagePrice");
+const lowes_price_el = document.getElementById("lowestPrice");
+const highest_price_el = document.getElementById("highestPrice");
+
+amount_el.textContent = get_amount(data);
+average_price_el.textContent = get_average_price(data)
+lowes_price_el.textContent = get_lowest_price(data);
+highest_price_el.textContent = get_highest_price(data);
+//////////////////////////////////
