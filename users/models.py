@@ -15,7 +15,7 @@ class AbstractCustomUser(models.Model):
         verbose_name_plural = 'Юзер'
 
     username = models.CharField(max_length=200, verbose_name="Никнейм", unique=True)
-    email = models.EmailField(verbose_name="Почта", unique=True)
+    email = models.EmailField(verbose_name="Почта", unique=True, blank=True)
     registered = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
 
 class CustomUser(AbstractCustomUser):
