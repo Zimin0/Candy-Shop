@@ -13,7 +13,7 @@ class Candy(models.Model):
 
     name = models.CharField(max_length=50, verbose_name="Название")
     img = models.ImageField(verbose_name="Фотография", upload_to='candies/', blank=True)
-    producer = models.ForeignKey(Producer, on_delete=models.SET_NULL, null=True, verbose_name="Производитель")
+    producer = models.ForeignKey(Producer, on_delete=models.SET_NULL, null=True, verbose_name="Производитель", blank=True)
     owner = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, verbose_name="Кто выложил конфету", blank=False, null=True)
     weight = models.DecimalField(verbose_name="Вес (грамм)", max_digits=8, decimal_places=2, default=1)
     price = models.DecimalField(verbose_name="Цена (руб)", max_digits=8, decimal_places=2, default=1)

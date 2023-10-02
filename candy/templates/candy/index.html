@@ -17,21 +17,21 @@
 
     <header>
             <h1 class="brand-name">
-                <a href="init.html">CANDYRATE</a>
+                <a href="{% url 'candy:index' %}">КэндиРейтинг</a> 
             </h1>
             <div class="divider"></div>
             <div class="user-menu"> 
-                <a href="add.html" class="menu-button">Добавить конфету</a>
+                <a href="{% url 'candy:candy_new' %}" class="menu-button">Добавить конфету</a>
                 <a href="register.html" class="menu-button">Зарегистрироваться</a>
                 <a href="login.html" class="menu-button">Войти</a>
                 <a href="about.html" class="menu-button">О проекте</a>
             </div>
             <div class="divider"></div>
             <nav>
-                <div class="stat-block">Общее кол-во: <span id="totalCandies">100</span></div>
-                <div class="stat-block">Средняя стоимость: <span id="averagePrice">50р</span></div>
-                <div class="stat-block">Самая низкая стоимость: <span id="lowestPrice">10р</span></div>
-                <div class="stat-block">Самая высокая стоимость: <span id="highestPrice">10р</span></div>
+                <div class="stat-block">Общее кол-во: <span id="totalCandies">0</span></div>
+                <div class="stat-block">Средняя стоимость: <span id="averagePrice">0р</span></div>
+                <div class="stat-block">Самая низкая стоимость: <span id="lowestPrice">0р</span></div>
+                <div class="stat-block">Самая высокая стоимость: <span id="highestPrice">0р</span></div>
             </nav>
     </header>
     <main id="main-content">

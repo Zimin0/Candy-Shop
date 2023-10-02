@@ -8,6 +8,9 @@ function printCandyHTML(candy){
     if (typeof candy.img == 'undefined'){
         imgPath = 'static/candy/img/blank.avif';
     }
+    
+    imgPath = candy.img ?? 'static/candy/img/blank.avif';
+    console.log(imgPath);
     let htmlText = `
         <div class="candy-block">
             <img src="${imgPath}" alt="Конфета">
@@ -27,8 +30,15 @@ let data = await getCandies();
 // Отображение конфет в шаблоне //
 for (let candy of data){
     // console.log(candy.name + "; price = " + candy.price);
-    let producer = await getProducers(candy.producer);
-    let owner = await getCustomUsers(candy.owner);
+    let producer = {name:"Неизвестный производитель"}
+    let owner = {name:"Неизвестный пользователь"}
+    
+    if (!(candy.producer === null)){
+        producer = await getProducers(candy.producer);
+    }
+    if (!(candy.owner === null)){
+        owner = await getCustomUsers(candy.owner);
+    }
     candy.producer = producer;
     candy.owner = owner;
     printCandyHTML(candy);
