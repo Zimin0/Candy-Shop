@@ -1,4 +1,4 @@
-const apiUrl = "https://b739-91-238-229-3.ngrok-free.app"; // URL сайта 
+const apiUrl = "https://38fa-91-238-229-3.ngrok-free.app/api"; // URL сайта 
 
 // Базовая функция для всех API функций // 
 async function __getDataFromDjangoRest(url, objectStr, index){
