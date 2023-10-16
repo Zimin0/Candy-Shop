@@ -7,6 +7,7 @@ class CandyModelTest(TestCase):
     def setUp(self):
         self.producer = Producer.objects.create(username="Valera", email="test@gmail.com")
         self.customuser = CustomUser.objects.create(username="User1", email="newtest@gmail.com")
+        
     def test_create_candy(self):
         candy = Candy.objects.create(
             name='Валидная конфета',

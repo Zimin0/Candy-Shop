@@ -5,22 +5,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'candy/style.css' %}"> 
+    <link rel="stylesheet" href="{% static 'candy/style.css' %}">
     <title>Конфеты</title>
 </head>
 
 <body>
     <header>
-            <h1 class="brand-name">
-                <a href="{% url 'candy:index' %}">КэндиРейтинг</a> 
-            </h1>
+        <h1 class="brand-name">
+            <a href="{% url 'candy:index' %}">КэндиРейтинг</a>
+        </h1>
     </header>
     <main id="main-content">
-        <form method="POST" class="post-form">{% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="menu-button">Сохранить</button>
-        </form>
+        <div class="form-container">
+            <div id="error-message" class="error">Пример ошибки: Введите все необходимые данные</div>
+            <form method="POST" class="post-form">
+                {% csrf_token %}
+                <p>
+                    <label class="label_field input_custom" for="id_name">Название:</label>
+                    <input type="text" name="name" maxlength="50" required id="id_name">
+                  </p>
+                  <p>
+                    <label class="label_field input_custom" for="id_weight">Вес (грамм):</label>
+                    <input type="number" name="weight" value="1" step="0.01" required id="id_weight">
+                  </p>
+                  <p>
+                    <label class="label_field input_custom" for="id_price">Цена (руб):</label>
+                    <input type="number" name="price" value="1" step="0.01" required id="id_price">
+                  </p>
+                  <p>
+                    <label class="label_field input_custom" for="id_rate">Оценка от владельца (от 1 до 10):</label>
+                    <input type="number" name="rate" value="1" required id="id_rate">
+                  </p>
+                <button type="submit" class="menu-button">Сохранить</button>
+            </form>
+        </div>
     </main>
 </body>
+<script type="module" src="{% static 'candy/form.js' %}"></script>
 
 </html>

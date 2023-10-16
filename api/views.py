@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, status
+from rest_framework.response import Response
 from api.serializers import UserSerializer, CandySerializer, ProducerSerializer, CustomUserSerializer
 from django.contrib.auth.models import User
 from candy.models import Candy
@@ -16,12 +17,19 @@ class UserDetail(generics.RetrieveAPIView): # ListCreateAPIView использу
     queryset = User.objects.all()
     serializer_class = UserSerializer
 ###################
-###### CANDY ######
-class CandyList(generics.ListAPIView):
+###### Candy ######
+class CandyList(generics.ListAPIView): 
     queryset = Candy.objects.all()
     serializer_class = CandySerializer
 
-class CandyDetail(generics.RetrieveAPIView):
+    def post(self, request, *args, **kwargs):
+        serializer = CandySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class CandyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Candy.objects.all()
     serializer_class = CandySerializer
 ####################
@@ -30,7 +38,7 @@ class CustomUserList(generics.ListAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
 
-class CustomUserDetail(generics.RetrieveAPIView):
+class CustomUserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
 ####################
@@ -39,7 +47,7 @@ class ProducerList(generics.ListAPIView):
     queryset = Producer.objects.all()
     serializer_class = ProducerSerializer
 
-class ProducerDetail(generics.RetrieveAPIView):
+class ProducerDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Producer.objects.all()
     serializer_class = ProducerSerializer
 ####################

@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-a!&vc2u52z(s*pd@q^+7m9)u2u!tulhc_@61m&c5esk%grb@3j
 DEBUG = True
 
 ALLOWED_HOSTS = ["*",]
-CSRF_TRUSTED_ORIGINS = ['https://38fa-91-238-229-3.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://3d20-91-238-229-3.ngrok-free.app']
 
 # Translation #
 STATIC_URL = '/static/'

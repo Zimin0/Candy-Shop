@@ -218,3 +218,42 @@ form input[type="submit"]:hover {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+#error-message {
+    margin: 0 auto 20px auto; /* Center the div & margin-bottom for space */
+    padding: 10px; /* Padding inside the div */
+    border: 2px solid red; /* Red border */
+    color: red; /* Red text */
+    background-color: #ffe6e6; /* Light red background */
+    text-align: center; /* Centered text */
+    border-radius: 5px; /* Rounded corners */
+    width: 50%; /* Set width, you might need to adjust this */
+    display: none;
+}
+
+.form-container {
+    width: 50%; /* Adjust the width as per your design */
+    margin: 0 auto; /* Center the form */
+}
+
+.error {
+    color: red;
+    border: 2px solid red;
+    padding: 10px;
+    text-align: center;
+    width: 100%; /* Taking the full width of the container */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    margin-bottom: 20px; /* Space between error message and form */
+}
+
+.post-form {
+    text-align: center; /* Aligns inline or inline-block elements to the center */
+}
+.label_field {
+    text-align: left;
+}
+
+.post-form button {
+    display: inline-block; /* Makes the button behave like an inline-level block container */
+    margin: 0 auto; /* Horizontally centers the button if it has 'display: block' */
+}

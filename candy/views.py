@@ -3,15 +3,10 @@ from django.views.generic import TemplateView
 from candy.forms import CandyForm
 from candy.models import Candy
 
-def index(request):
-    return render(request, 'candy/index.html')
-
-def candy_new(request):
-    if request.method == 'POST':
-        print(request.POST)
-    form = CandyForm()
-    return render(request, 'candy/candyForm.html', {'form': form})
-
+class MainCandy(TemplateView):
+    """ Главная страница """
+    template_name = "candy/index.html"
+    
 class CreateNewCandy(TemplateView):
     """ Страница с формой создания новой конфеты """
     template_name = "candy/candyForm.html"
@@ -26,6 +21,3 @@ class CreateNewCandy(TemplateView):
             print("Форма невалидна!")
         return redirect("candy:index")
     
-    def get(self, request):
-        form = CandyForm()
-        return render(request, CreateNewCandy.template_name, {'form': form})

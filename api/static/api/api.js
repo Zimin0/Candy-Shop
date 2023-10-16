@@ -1,6 +1,6 @@
-const apiUrl = "https://38fa-91-238-229-3.ngrok-free.app/api"; // URL сайта 
+const apiUrl = "https://3d20-91-238-229-3.ngrok-free.app/api"; // URL сайта 
 
-// Базовая функция для всех API функций // 
+// Базовая функция для всех API функций // s
 async function __getDataFromDjangoRest(url, objectStr, index){
     let response = await fetch(`${url}/${objectStr}`);
     if (!(typeof index === 'undefined')){ // если был передан номер объекта

@@ -1,7 +1,5 @@
 import { getCandies, getProducers, getCustomUsers, get_amount, get_average_price, get_lowest_price, get_highest_price } from "../api/api.js";
 
-
-
 // Выводит конфету в html шаблон //
 function printCandyHTML(candy){
     let imgPath = candy.img;
