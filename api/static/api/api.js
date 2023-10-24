@@ -1,6 +1,6 @@
-const apiUrl = "https://3d20-91-238-229-3.ngrok-free.app/api"; // URL сайта 
+export const apiUrl = "https://4370-91-238-229-3.ngrok-free.app/api"; // URL сайта 
 
-// Базовая функция для всех API функций // s
+// Базовая функция для всех API функций (GET) // 
 async function __getDataFromDjangoRest(url, objectStr, index){
     let response = await fetch(`${url}/${objectStr}`);
     if (!(typeof index === 'undefined')){ // если был передан номер объекта
@@ -19,6 +19,25 @@ async function __getDataFromDjangoRest(url, objectStr, index){
 export async function getCandies(index){
     let json = await __getDataFromDjangoRest(apiUrl, 'candies', index);
     return json;
+}
+
+// Создает новую конфету в БД // 
+export async function createCandy(data, redirectToPageLink){
+    let requestContent = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    };
+    fetch('/api/candies/', requestContent)
+    .then(response => {
+            return response.json();
+        })
+        .then(data =>{
+            window.location.href = redirectToPageLink;  // Перемещено сюда
+        })
+        .catch(error =>{
+            console.error('Ошибка:', error.message);
+        });
 }
 
 // Возвращает json производителей //

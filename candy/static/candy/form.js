@@ -1,3 +1,5 @@
+import {createCandy} from "../api/api.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.post-form');
     form.addEventListener('submit', function(event){
@@ -32,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             errorField.style.display = 'block';
             errorField.innerHTML = errorMessages.join('<br>\n'); 
         }
-        //////////////////////
+        /////////////////////////////////////////////////
         // Если нет ошибок, отправить данные на сервер // 
         if (errorMessages.length === 0){
             let formData = {
@@ -42,28 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 rate:rate,
             };
 
-            let requestContent = {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(formData)
-            };
-            fetch('/api/candies/', requestContent)
-                .then(response => {
-                    if (!response.ok) {
-                        return response.json().then(error => {
-                            throw new Error(error.detail || 'Что-то пошло не так');
-                        });
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Успех:', data);
-                    window.location.href = 'https://3d20-91-238-229-3.ngrok-free.app';  // Перемещено сюда
-                })
-                .catch(error => {
-                    console.error('Ошибка:', error.message);
-                });
-        }
+            createCandy(formData, 'https://4370-91-238-229-3.ngrok-free.app');
+        } 
     })
 })
 

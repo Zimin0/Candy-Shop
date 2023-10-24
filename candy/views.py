@@ -11,13 +11,6 @@ class CreateNewCandy(TemplateView):
     """ Страница с формой создания новой конфеты """
     template_name = "candy/candyForm.html"
 
-    # def post(self, request):
-    #     form = CandyForm(request.POST)
-    #     if form.is_valid():
-    #         new_candy = form.save(commit=False)
-    #         new_candy.save()
-    #         print("Форма валидна!")
-    #     else:
-    #         print("Форма невалидна!")
-    #     return redirect("candy:index")
-    
+class DisplayCandy(TemplateView):
+    """ Страница с отображением определенной конфеты """
+    template_name = "candy/particularCandy.html"

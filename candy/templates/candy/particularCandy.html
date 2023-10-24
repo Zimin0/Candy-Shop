@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'candy/style.css' %}">
+    <title>Конфета - Название конфеты</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .candy-block {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .candy-block img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .candy-info {
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .property-name {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="brand-name">
+        Candy Shop
+    </div>
+</header>
+
+<main>
+    <div class="candy-block">
+        <img src="static/candy/img/blank.avif" alt="Фотография конфеты Название конфеты">
+        <div class="candy-info">
+            <h2 id="name"></h2>
+            
+            <p id="producer"><span class="property-name">Производитель:</span> <span class="candy-manufacturer"></span></p>
+            <p id="owner"><span class="property-name">Пользователь:</span></p>
+            <p id="weight"><span class="property-name">Вес:</span>грамм</p>
+            <p id="price"><span class="property-name">Стоимость:</span>р</p>
+            <p id="rate"><span class="property-name">Рейтинг:</span></p>
+        </div>
+    </div>
+</main>
+
+<script type="module" src="{% static 'candy/getCandy.js' %}"></script>
+
+</body>
+</html>
