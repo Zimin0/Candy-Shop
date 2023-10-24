@@ -13,7 +13,7 @@ function printCandyHTML(candy){
         <div class="candy-block">
             <img src="${imgPath}" alt="Конфета">
             <div class="candy-info">
-                <h2>${candy.name}</h2>
+                <h2><a href="/candy/${candy.id}">${candy.name}</a></h2>
                 <p><span class="property-name">Производитель:</span> <span class="candy-manufacturer"> ${candy.producer.username}</span></p>
                 <p><span class="property-name">Пользователь:</span>${candy.owner.username}</p>
                 <p><span class="property-name">Вес:</span>${candy.weight} грамм</p>

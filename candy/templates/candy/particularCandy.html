@@ -52,12 +52,11 @@
     </div>
 </header>
 
-<main>
+<!-- <main>
     <div class="candy-block">
         <img src="static/candy/img/blank.avif" alt="Фотография конфеты Название конфеты">
         <div class="candy-info">
             <h2 id="name"></h2>
-            
             <p id="producer"><span class="property-name">Производитель:</span> <span class="candy-manufacturer"></span></p>
             <p id="owner"><span class="property-name">Пользователь:</span></p>
             <p id="weight"><span class="property-name">Вес:</span>грамм</p>
@@ -65,9 +64,15 @@
             <p id="rate"><span class="property-name">Рейтинг:</span></p>
         </div>
     </div>
+</main> -->
+
+<main id="main-content">
+    <!-- <script type="module" src="{% static 'api/api.js' %}"></script> -->
+    <!-- <script type="module" src="{% static 'candy/candy.js' %}"></script> -->
+    <script type="module" src="{% static 'candy/getCandy.js' %}"></script>
 </main>
 
-<script type="module" src="{% static 'candy/getCandy.js' %}"></script>
+
 
 </body>
 </html>

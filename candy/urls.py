@@ -11,5 +11,5 @@ urlpatterns = [
     path('', MainCandy.as_view(), name='index'),
     path('', include(router.urls)),
     path('candy/new/', CreateNewCandy.as_view(), name='candy_new'),
-    path('candy/<int:id>', DisplayCandy.as_view(), name='candy_display'),
+    path('candy/<int:id>/', DisplayCandy.as_view(), name='candy_display'),
 ]

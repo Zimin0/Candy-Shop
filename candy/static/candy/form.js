@@ -49,33 +49,3 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
-
-
-// let formData = {
-//     name: 'name12121',
-//     weight: '111',
-//     price: '222',
-//     rate:'3',
-// };
-
-// let requestContent = {
-//     method: 'POST',
-//     headers: {'Content-Type': 'application/json'},
-//     body: JSON.stringify(formData)
-// };
-
-// fetch('/api/candies/', requestContent)
-//     .then(response => {
-//         if (!response.ok) {
-//             return response.json().then(error => {
-//                 throw new Error(error.detail || 'Что-то пошло не так');
-//             });
-//         }
-//         return response.json();
-//     })
-//     .then(data => {
-//         console.log('Успех:', data);
-//     })
-//     .catch(error => {
-//         console.error('Ошибка:', error.message);
-//     });
