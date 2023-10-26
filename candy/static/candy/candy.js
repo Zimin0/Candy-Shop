@@ -14,9 +14,7 @@ function printCandyHTML(candy){
             <img src="${imgPath}" alt="Конфета">
             <div class="candy-info">
                 <h2><a href="/candy/${candy.id}">${candy.name}</a></h2>
-                <p><span class="property-name">Производитель:</span> <span class="candy-manufacturer"> ${candy.producer.username}</span></p>
                 <p><span class="property-name">Пользователь:</span>${candy.owner.username}</p>
-                <p><span class="property-name">Вес:</span>${candy.weight} грамм</p>
                 <p><span class="property-name">Стоимость:</span>${candy.price}р</p>
                 <p><span class="property-name">Рейтинг:</span>${candy.rate}</p>
             </div>

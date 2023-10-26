@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 rate:rate,
             };
 
-            createCandy(formData, 'https://4370-91-238-229-3.ngrok-free.app');
+            createCandy(formData, 'https://181c-91-238-229-3.ngrok-free.app');
         } 
     })
 })

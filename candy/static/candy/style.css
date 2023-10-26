@@ -43,6 +43,8 @@ main {
 }
 
 .candy-block {
+    display: flex;
+    flex-direction: column;
     flex-basis: calc(20% - 20px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border: 1px solid #ccc;
@@ -65,6 +67,9 @@ main {
 .candy-info {
     padding: 10px;
     font-size: 14px;
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
 }
 
 h2 {
@@ -117,7 +122,6 @@ h2 {
     margin: 10px 0;
 }
 
-/* Общие стили для формы */
 form {
     max-width: 600px;
     margin: 20px auto;
@@ -128,19 +132,16 @@ form {
     background-color: #f4f4f4;
 }
 
-/* Стили для блоков ввода */
 form div {
     margin-bottom: 15px;
 }
 
-/* Стили для меток */
 form label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-/* Стили для полей ввода */
 form input[type="text"],
 form input[type="url"],
 form input[type="number"] {
@@ -148,10 +149,9 @@ form input[type="number"] {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box; /* Это поможет удостовериться, что ширина поля ввода включает в себя внутренние отступы */
+    box-sizing: border-box;
 }
 
-/* Стили для кнопки отправки */
 form input[type="submit"] {
     cursor: pointer;
     background-color: #3f3f3f;
@@ -168,13 +168,13 @@ form input[type="submit"]:hover {
 }
 
 .brand-name a {
-    color: inherit; /* Будет наследовать цвет текста родителя */
-    text-decoration: none; /* Убирает подчёркивание у ссылки */
+    color: inherit;
+    text-decoration: none;
 }
 
 .brand-name a:hover, .brand-name a:focus {
-    color: inherit; /* Сохраняет цвет текста при наведении и фокусе */
-    text-decoration: none; /* Убирает подчёркивание при наведении */
+    color: inherit;
+    text-decoration: none;
 }
 
 #loader {
@@ -189,13 +189,13 @@ form input[type="submit"]:hover {
     align-items: center;
     flex-direction: column;
     z-index: 1000;
-    opacity: 1; /* начальное значение opacity */
-    transition: opacity 0.5s ease-in-out; /* добавлено для плавного перехода opacity */
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
 }
 
 #loader.hidden {
-    opacity: 0; /* loader станет полностью прозрачным */
-    pointer-events: none; /* предотвращает взаимодействие с пользователем */
+    opacity: 0;
+    pointer-events: none;
 }
 
 .spinner {
@@ -220,20 +220,20 @@ form input[type="submit"]:hover {
 }
 
 #error-message {
-    margin: 0 auto 20px auto; /* Center the div & margin-bottom for space */
-    padding: 10px; /* Padding inside the div */
-    border: 2px solid red; /* Red border */
-    color: red; /* Red text */
-    background-color: #ffe6e6; /* Light red background */
-    text-align: center; /* Centered text */
-    border-radius: 5px; /* Rounded corners */
-    width: 50%; /* Set width, you might need to adjust this */
+    margin: 0 auto 20px auto;
+    padding: 10px;
+    border: 2px solid red;
+    color: red;
+    background-color: #ffe6e6;
+    text-align: center;
+    border-radius: 5px;
+    width: 50%;
     display: none;
 }
 
 .form-container {
-    width: 50%; /* Adjust the width as per your design */
-    margin: 0 auto; /* Center the form */
+    width: 50%;
+    margin: 0 auto;
 }
 
 .error {
@@ -241,19 +241,41 @@ form input[type="submit"]:hover {
     border: 2px solid red;
     padding: 10px;
     text-align: center;
-    width: 100%; /* Taking the full width of the container */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
-    margin-bottom: 20px; /* Space between error message and form */
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
 .post-form {
-    text-align: center; /* Aligns inline or inline-block elements to the center */
+    text-align: center;
 }
+
 .label_field {
     text-align: left;
 }
 
 .post-form button {
-    display: inline-block; /* Makes the button behave like an inline-level block container */
-    margin: 0 auto; /* Horizontally centers the button if it has 'display: block' */
+    display: inline-block;
+    margin: 0 auto;
 }
+
+.candy-info a {
+    text-decoration: none;
+    color: inherit;
+    transition: font-size 0.3s, color 0.3s;
+}
+
+.candy-info a:hover {
+    color: #283d89;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
