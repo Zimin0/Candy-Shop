@@ -2,7 +2,7 @@
 ### A project based on REST-API and JavaScript.
 
 
-![](4gm97.gif)
+![](84gm97.gif)
 
 ## Used technologies:
 - HTML and CSS
