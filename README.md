@@ -1,6 +1,9 @@
 # Candy-Shop
 ### A project based on REST-API and JavaScript.
 
+
+![](4gm97.gif)
+
 ## Used technologies:
 - HTML and CSS
 - JS (to serve frontend templates by sending requests to the Django server)
