@@ -2,15 +2,11 @@ import { getCandies, getProducers, getCustomUsers } from "../api/api.js";
 
 
 async function loadCandyData(index){
-    let candy = await getCandies(index);
+    const candy = await getCandies(index);
     console.log(candy);
 
-
-    let imgPath = candy.img;
-    if (typeof candy.img == 'undefined'){
-        imgPath = 'static/candy/img/blank.avif';
-    }
-
+    // Установка изображения конфеты или значения по умолчанию
+    const imgPath = candy.img ?? 'static/candy/img/blank.avif';
     let producer = {name:'Неизвестный производитель'};
     let owner = {name:'Неизвестный пользователь'};
 
@@ -23,24 +19,28 @@ async function loadCandyData(index){
     candy.producer = producer.username;
     candy.owner = owner.username;
 
-    imgPath = candy.img ?? 'static/candy/img/blank.avif';
-    console.log(imgPath);
-    let htmlText = `
+    const htmlText = `
         <div class="candy-block">
             <img src="${imgPath}" alt="Конфета">
             <div class="candy-info">
                 <h2><a href="/candy/${candy.id}">${candy.name}</a></h2>
-                <p><span class="property-name">Производитель:</span> <span class="candy-manufacturer"> ${candy.producer}</span></p>
-                <p><span class="property-name">Пользователь:</span>${candy.owner}</p>
+                <p><span class="property-name">Производитель:</span> <span class="candy-manufacturer">${producer.name}</span></p>
+                <p><span class="property-name">Пользователь:</span>${owner.username}</p>
                 <p><span class="property-name">Вес:</span>${candy.weight} грамм</p>
                 <p><span class="property-name">Стоимость:</span>${candy.price}р</p>
                 <p><span class="property-name">Рейтинг:</span>${candy.rate}</p>
             </div>
         </div>`;
-    document.getElementById('main-content').innerHTML += htmlText;
+
+    // Безопасное добавление HTML в DOM
+    const mainContent = document.getElementById('main-content');
+    mainContent.insertAdjacentHTML('beforeend', htmlText);
 }
 
+// Получение индекса конфеты из URL
 const currentUrl = window.location.href.split("/");
-let candyIndex = currentUrl.at(-2);
+const candyIndex = currentUrl.at(-2);
 console.log(candyIndex);
+
+// Загрузка данных о конфете
 loadCandyData(candyIndex);

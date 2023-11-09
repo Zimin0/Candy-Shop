@@ -1,54 +1,53 @@
-import {apiUrl} from './config.json' assert { type: 'json' };
+import config from './config.json' assert { type: 'json' };
+const apiUrl = config.apiUrl;
 
 // Базовая функция для всех API функций (GET) // 
-async function __getDataFromDjangoRest(url, objectStr, index){
-    let response = await fetch(`${url}/${objectStr}`);
-    if (!(typeof index === 'undefined')){ // если был передан номер объекта
-        response = await fetch(`${url}/${objectStr}/${index}`);
-    }
-    if (response.ok){
-        let response_to_json = await response.json();
-        return response_to_json;
-    }
-    else{
-        console.log(`Возникла ошибка при получении "${objectStr}" в API: ` + response.status );
+async function __getDataFromDjangoRest(objectStr, index){
+    const endpoint = index ? `${apiUrl}/${objectStr}/${index}` : `${apiUrl}/${objectStr}`;
+    try {
+        const response = await fetch(endpoint);
+        if (response.ok){
+            return await response.json();
+        } else {
+            console.log(`Возникла ошибка при получении "${objectStr}" в API: ` + response.status);
+        }
+    } catch (error) {
+        console.error('Ошибка при запросе к API:', error);
     }
 }
 
-// Возвращает json конфет //
-export async function getCandies(index){
-    let json = await __getDataFromDjangoRest(apiUrl, 'candies', index);
-    return json;
+// Возвращает json конфет
+export function getCandies(index){
+    return __getDataFromDjangoRest('candies', index);
 }
 
-// Создает новую конфету в БД // 
+// Создает новую конфету в БД
 export async function createCandy(data, redirectToPageLink){
-    let requestContent = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-    };
-    fetch('/api/candies/', requestContent)
-    .then(response => {
-            return response.json();
-        })
-        .then(data =>{
-            window.location.href = redirectToPageLink;  // Перемещено сюда
-        })
-        .catch(error =>{
-            console.error('Ошибка:', error.message);
+    try {
+        const response = await fetch(`${apiUrl}/candies/`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
         });
+        if (response.ok) {
+            await response.json();
+            window.location.href = redirectToPageLink;
+        } else {
+            console.error('Ошибка при создании конфеты:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Ошибка:', error.message);
+    }
 }
 
-// Возвращает json производителей //
-export async function getProducers(index){
-    let json = await __getDataFromDjangoRest(apiUrl, 'producers', index);
-    return json;
+// Возвращает json производителей
+export function getProducers(index){
+    return __getDataFromDjangoRest('producers', index);
 }
-// Возвращает json юзеров //  
-export async function getCustomUsers(index){
-    let json = await __getDataFromDjangoRest(apiUrl, 'customusers', index);
-    return json;
+
+// Возвращает json юзеров
+export function getCustomUsers(index){
+    return __getDataFromDjangoRest('customusers', index);
 }
 
 // Возвращает общее кол-во конфет
