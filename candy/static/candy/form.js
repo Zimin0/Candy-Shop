@@ -1,4 +1,7 @@
 import {createCandy} from "../api/api.js";
+import url from '../api/config.json' assert {type:'json'};
+
+const apiUrl = url.apiUrl;
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.post-form');
@@ -44,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 rate:rate,
             };
 
-            createCandy(formData, 'https://181c-91-238-229-3.ngrok-free.app');
+            createCandy(formData, apiUrl);
         } 
     })
 })
